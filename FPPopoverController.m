@@ -366,7 +366,20 @@
 
 -(void)deviceOrientationDidChange:(NSNotification*)notification
 {
-	_deviceOrientation = [UIDevice currentDevice].orientation;
+    UIDeviceOrientation curOrientation= [UIDevice currentDevice].orientation;
+    
+    if ((UIInterfaceOrientationPortraitUpsideDown == curOrientation)
+        || (UIDeviceOrientationFaceUp == curOrientation)
+        || (UIDeviceOrientationFaceDown == curOrientation))
+    {
+        return;
+    }
+    
+    if (_deviceOrientation == curOrientation) {
+        return;
+    }
+    
+	_deviceOrientation = curOrientation;
 
 	BOOL shouldResetView = NO;
 
