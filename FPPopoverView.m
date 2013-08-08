@@ -212,7 +212,7 @@
     if(direction == FPPopoverArrowDirectionUp)
     {
         CGPathAddLineToPoint(path, NULL, ax, ah+b);
-        CGPathAddLineToPoint(path, NULL, ax+aw, b);
+        CGPathAddLineToPoint(path, NULL, ax+aw, b + 10);
         CGPathAddLineToPoint(path, NULL, ax+2*aw, ah+b);
         
     }
@@ -415,7 +415,7 @@
     //internal border
     CGContextBeginPath(ctx);
     CGContextAddPath(ctx, contentPath);
-    CGContextSetRGBStrokeColor(ctx, 0.7, 0.7, 0.7, 1.0);
+    CGContextSetRGBStrokeColor(ctx, 1.0, 1.0, 1.0, 1.0);
     CGContextSetLineWidth(ctx, 1);
     CGContextSetLineCap(ctx,kCGLineCapRound);
     CGContextSetLineJoin(ctx, kCGLineJoinRound);
@@ -426,7 +426,7 @@
     CGPathRef externalBorderPath = [self newContentPathWithBorderWidth:1.0 arrowDirection:_arrowDirection];
     CGContextBeginPath(ctx);
     CGContextAddPath(ctx, externalBorderPath);
-    CGContextSetRGBStrokeColor(ctx, 0.4, 0.4, 0.4, 1.0);
+    CGContextSetRGBStrokeColor(ctx, 1.0, 1.0, 1.0, 1.0);
     CGContextSetLineWidth(ctx, 1);
     CGContextSetLineCap(ctx,kCGLineCapRound);
     CGContextSetLineJoin(ctx, kCGLineJoinRound);

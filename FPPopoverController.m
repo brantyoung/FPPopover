@@ -49,6 +49,8 @@
 @synthesize touchView = _touchView;
 @synthesize contentSize = _contentSize;
 @synthesize origin = _origin;
+@synthesize originXOffset = _originXOffset;
+@synthesize originYOffset = _originYOffset;
 @synthesize arrowDirection = _arrowDirection;
 @synthesize tint = _tint;
 @synthesize border = _border;
@@ -110,6 +112,10 @@
     if(self)
     {
 		self.delegate = delegate;
+        
+        self.originXOffset = 0.;
+        self.originYOffset = 0.;
+        _shadowColor = [[UIColor grayColor] CGColor];
         
         self.alpha = 1.0;
         self.arrowDirection = FPPopoverArrowDirectionAny;
@@ -545,6 +551,9 @@
         if(r.origin.y <= 20) r.origin.y += 20;
     }
 
+    r.origin.x += self.originXOffset;
+    r.origin.y += self.originYOffset;
+    
     //check if the developer wants and arrow
     if(self.arrowDirection != FPPopoverNoArrow)
         _contentView.arrowDirection = bestDirection;
@@ -575,9 +584,9 @@
     }
     else
     {
-        _contentView.layer.shadowOpacity = 0.7;
-        _contentView.layer.shadowRadius = 5;
-        _contentView.layer.shadowOffset = CGSizeMake(-3, 3);
+        _contentView.layer.shadowOpacity = 1.0;
+        _contentView.layer.shadowRadius = 1;
+        _contentView.layer.shadowOffset = CGSizeMake(0, 0);
         _contentView.layer.shadowColor = _shadowColor;
         if(_shadowColor)
         {
