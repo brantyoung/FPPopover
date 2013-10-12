@@ -123,7 +123,7 @@
         _border = YES;
         
         _touchView = [[FPTouchView alloc] initWithFrame:self.view.bounds];
-        _touchView.backgroundColor = [UIColor clearColor];
+        _touchView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
         _touchView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _touchView.clipsToBounds = NO;
         [self.view addSubview:_touchView];
@@ -598,8 +598,8 @@
     else
     {
         _contentView.layer.shadowOpacity = 1.0;
-        _contentView.layer.shadowRadius = 2;
-        _contentView.layer.shadowOffset = CGSizeMake(0, 1);
+        _contentView.layer.shadowRadius = 1;
+        _contentView.layer.shadowOffset = CGSizeMake(0, 0);
         _contentView.layer.shadowColor = _shadowColor;
         if(_shadowColor)
         {
